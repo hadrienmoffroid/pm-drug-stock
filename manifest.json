@@ -1,0 +1,22 @@
+{
+  "name": "Princess Marina Drug Stock",
+  "short_name": "PM Drug Stock",
+  "description": "Emergency & Pharmacy medication stock management",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a2540",
+  "theme_color": "#0a2540",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192/0a2540/38bdf8?text=💊",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512/0a2540/38bdf8?text=💊",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
