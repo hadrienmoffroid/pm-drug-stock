@@ -232,7 +232,7 @@
 
   function formatDate(iso) {
     if (!iso) return null;
-    const d = new Date(iso);
+    const d = new Date(new Date(iso).toLocaleString("en-US", {timeZone: "Africa/Gaborone"}));
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     return String(d.getDate()).padStart(2,'0') + " " + months[d.getMonth()] + " " + d.getFullYear() + ", " + String(d.getHours()).padStart(2,'0') + ":" + String(d.getMinutes()).padStart(2,'0');
   }
@@ -345,6 +345,15 @@
   }
 
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function(){});
+
+  // Keep-alive ping to prevent Supabase free tier pausing
+  function keepAlive() {
+    fetch(SUPABASE_URL + "/rest/v1/medications?limit=1", {
+      headers: { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY }
+    }).catch(function(){});
+  }
+  keepAlive();
+  setInterval(keepAlive, 4 * 60 * 1000); // ping every 4 minutes while app is open
 </script>
 </body>
 </html>
